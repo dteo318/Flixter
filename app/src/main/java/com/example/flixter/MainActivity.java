@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String NOW_PLAYING_URL = "https://api.themoviedb.org/3/movie/now_playing";
     // TODO: Enter API key here
-    private static final String MOVIE_DB_API_KEY = "XXXXX";
+    private static final String MOVIE_DB_API_KEY = "XXX";
     public static final String TAG = "MainActivity";
 
     List<Movie> movies;
