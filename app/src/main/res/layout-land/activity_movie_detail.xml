@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#4a4e69"
+    tools:context=".MovieDetailActivity">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="24dp"
+        app:cardBackgroundColor="#f2e9e4"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="20dp">
+
+            <com.google.android.youtube.player.YouTubePlayerView
+                android:id="@+id/player"
+                android:layout_width="350dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvDetailTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Movie Title"
+                android:textAlignment="center"
+                android:textColor="#22223b"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:transitionName="movieTitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/player"
+                app:layout_constraintTop_toTopOf="@+id/player" />
+
+            <TextView
+                android:id="@+id/tvDetailOverview"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="16dp"
+                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at velit quis neque ornare volutpat et eu velit. Suspendisse sodales tempus eros vel laoreet. Aenean suscipit sem a dictum convallis. Nam efficitur scelerisque risus vitae elementum. Cras dapibus orci ac mattis facilisis. Nulla eu nunc lacinia, molestie massa pellentesque, maximus orci. Phasellus imperdiet, odio euismod luctus congue, sem nulla auctor."
+                android:textColor="#9a8c98"
+                android:textSize="16dp"
+                android:transitionName="movieOverview"
+                app:layout_constraintBottom_toBottomOf="@+id/player"
+                app:layout_constraintEnd_toEndOf="@+id/tvDetailTitle"
+                app:layout_constraintStart_toStartOf="@+id/tvDetailTitle"
+                app:layout_constraintTop_toBottomOf="@+id/ratingBarDetail" />
+
+            <RatingBar
+                android:id="@+id/ratingBarDetail"
+                style="@style/Widget.AppCompat.RatingBar.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:isIndicator="true"
+                android:numStars="10"
+                android:scaleX="1.85"
+                android:scaleY="1.85"
+                app:layout_constraintEnd_toEndOf="@+id/tvDetailTitle"
+                app:layout_constraintStart_toStartOf="@+id/tvDetailTitle"
+                app:layout_constraintTop_toBottomOf="@+id/tvDetailTitle" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

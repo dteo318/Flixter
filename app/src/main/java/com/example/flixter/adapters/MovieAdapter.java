@@ -1,5 +1,6 @@
 package com.example.flixter.adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -13,9 +14,12 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.core.util.Pair;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.example.flixter.MovieDetailActivity;
 import com.example.flixter.R;
@@ -125,7 +129,9 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
                     Intent intent = new Intent(context, MovieDetailActivity.class);
                     // Passing movie data using Parceler
                     intent.putExtra("movie", Parcels.wrap(movie));
-                    context.startActivity(intent);
+                    // Setting shared element transition
+                    ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) context, (View)tvTitle, "movieTitle");
+                    context.startActivity(intent, options.toBundle());
                 }
             });
         }
@@ -147,6 +153,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
             }
             Glide.with(context)
                     .load(imageUrl)
+                    .transform(new RoundedCorners(35))
                     .placeholder(R.drawable.ic_placeholder)
                     .override(placeholderScaleWidth, placeholderScaleHeight)
                     .dontAnimate()
@@ -160,7 +167,12 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
                     Intent intent = new Intent(context, MovieDetailActivity.class);
                     // Passing movie data using Parceler
                     intent.putExtra("movie", Parcels.wrap(movie));
-                    context.startActivity(intent);
+                    // Setting shared element transition
+                    Pair<View, String> titleTransitionPair = Pair.create((View)tvTitle, "movieTitle");
+                    Pair<View, String> overviewTransitionPair = Pair.create((View)tvOverview, "movieOverview");
+                    ActivityOptionsCompat options = ActivityOptionsCompat.
+                            makeSceneTransitionAnimation((Activity) context, titleTransitionPair, overviewTransitionPair);
+                    context.startActivity(intent, options.toBundle());
                 }
             });
         }

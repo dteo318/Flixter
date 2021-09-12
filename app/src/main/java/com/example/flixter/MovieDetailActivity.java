@@ -92,8 +92,12 @@ public class MovieDetailActivity extends YouTubeBaseActivity {
             @Override
             public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
                 Log.d(TAG, "onInitializationSuccess");
-                // Loading movie YouTube video
-                youTubePlayer.cueVideo(youtubeVideoKey);
+                // Loading movie YouTube video if movie has rating above 8
+                if (movie.getAverageRating() >= 8) {
+                    youTubePlayer.loadVideo(youtubeVideoKey);
+                } else {
+                    youTubePlayer.cueVideo(youtubeVideoKey);
+                }
             }
 
             @Override

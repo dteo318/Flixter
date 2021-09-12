@@ -42,7 +42,8 @@
                 android:textAlignment="center"
                 android:textColor="#22223b"
                 android:textSize="32dp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:transitionName="movieTitle" />
 
             <RatingBar
                 android:id="@+id/ratingBarDetail"
@@ -64,7 +65,8 @@
                 android:layout_marginTop="12dp"
                 android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at velit quis neque ornare volutpat et eu velit. Suspendisse sodales tempus eros vel laoreet. Aenean suscipit sem a dictum convallis. Nam efficitur scelerisque risus vitae elementum. Cras dapibus orci ac mattis facilisis. Nulla eu nunc lacinia, molestie massa pellentesque, maximus orci. Phasellus imperdiet, odio euismod luctus congue, sem nulla auctor."
                 android:textColor="#9a8c98"
-                android:textSize="16dp" />
+                android:textSize="16dp"
+                android:transitionName="movieOverview" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
