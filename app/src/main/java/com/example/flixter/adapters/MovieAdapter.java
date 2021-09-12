@@ -1,6 +1,7 @@
 package com.example.flixter.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -8,16 +9,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
+import com.example.flixter.MovieDetailActivity;
 import com.example.flixter.R;
 import com.example.flixter.models.Movie;
 
 import org.jetbrains.annotations.NotNull;
+import org.parceler.Parcels;
 
 import java.util.List;
 
@@ -81,12 +86,14 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView ivPoster;
         TextView tvTitle, tvOverview;
+        CardView cardContainer;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             ivPoster = itemView.findViewById(R.id.ivPoster);
             tvTitle = itemView.findViewById(R.id.tvTitle);
             tvOverview = itemView.findViewById(R.id.tvOverview);
+            cardContainer = itemView.findViewById(R.id.cardContainer);
         }
 
         public void bindPopularMovie(Movie movie) {
@@ -109,6 +116,18 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
                     .override(placeholderScaleWidth, placeholderScaleHeight)
                     .dontAnimate()
                     .into(ivPoster);
+            // Adding click listener on movie item to view more movie details
+            cardContainer.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(context, movie.getTitle(), Toast.LENGTH_SHORT).show();
+                    // Sending user to movie detail screen
+                    Intent intent = new Intent(context, MovieDetailActivity.class);
+                    // Passing movie data using Parceler
+                    intent.putExtra("movie", Parcels.wrap(movie));
+                    context.startActivity(intent);
+                }
+            });
         }
 
         public void bindRegularMovie(Movie movie) {
@@ -132,6 +151,18 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
                     .override(placeholderScaleWidth, placeholderScaleHeight)
                     .dontAnimate()
                     .into(ivPoster);
+            // Adding click listener on movie item to view more movie details
+            cardContainer.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(context, movie.getTitle(), Toast.LENGTH_SHORT).show();
+                    // Sending user to movie detail screen
+                    Intent intent = new Intent(context, MovieDetailActivity.class);
+                    // Passing movie data using Parceler
+                    intent.putExtra("movie", Parcels.wrap(movie));
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 }
